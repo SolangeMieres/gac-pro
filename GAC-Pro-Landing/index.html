@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAC Pro - Sistema de Capacitación Corporativa</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <style>
         /* Paleta de colores y estilos generales */
         :root {
@@ -16,6 +17,9 @@
             --fondo: #f8f9fa;
             --texto: #333;
         }
+        
+        /* Deslizamiento suave para los botones */
+        html { scroll-behavior: smooth; }
         
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--fondo); color: var(--texto); line-height: 1.6; }
@@ -50,22 +54,17 @@
         .card h3 { font-size: 20px; margin-bottom: 15px; color: var(--secundario); }
         .card p { color: #555; font-size: 14px; }
 
-        /* Llamado a la Acción (CTA) */
-        .cta { padding: 80px 10%; text-align: center; background: var(--secundario); color: white; }
-        .cta h2 { font-size: 36px; margin-bottom: 20px; }
-        .cta p { font-size: 18px; margin-bottom: 30px; opacity: 0.8; }
+        /* Sección Cómo Funciona */
+        .steps { padding: 80px 10%; background: white; text-align: center; }
+        .steps h2 { font-size: 36px; color: var(--secundario); margin-bottom: 10px; }
+        .steps .subtitulo { color: #7f8c8d; margin-bottom: 50px; font-size: 18px; }
+        .grid-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .step-card { padding: 40px 20px; background: var(--fondo); border-radius: 10px; text-align: center; border: 1px solid #eee; transition: transform 0.3s; }
+        .step-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .step-num { width: 60px; height: 60px; background: var(--acento); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; margin: 0 auto 20px auto; box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4); }
+        .step-card h3 { color: var(--primario); margin-bottom: 15px; font-size: 20px; }
+        .step-card p { color: #555; font-size: 15px; }
 
-        /* Footer */
-        footer { background: #1a252f; color: #bdc3c7; text-align: center; padding: 20px; font-size: 14px; }
-        footer span { color: var(--acento); font-weight: bold; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding: 50px 5%; }
-            .hero-text { padding-right: 0; margin-bottom: 40px; }
-            .hero-text h1 { font-size: 36px; }
-            nav a { display: none; } /* Esconde links en móvil para simplificar */
-        }
         /* Sección de Precios */
         .pricing { padding: 80px 10%; background: var(--fondo); text-align: center; }
         .pricing h2 { font-size: 36px; color: var(--secundario); margin-bottom: 10px; }
@@ -85,17 +84,23 @@
         .btn-price:hover { background: var(--primario); color: white; }
         .destacado .btn-price { background: var(--primario); color: white; }
         .destacado .btn-price:hover { background: #1a5276; }
-    /* Sección Cómo Funciona */
-        .steps { padding: 80px 10%; background: white; text-align: center; }
-        .steps h2 { font-size: 36px; color: var(--secundario); margin-bottom: 10px; }
-        .steps .subtitulo { color: #7f8c8d; margin-bottom: 50px; font-size: 18px; }
-        .grid-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .step-card { padding: 40px 20px; background: var(--fondo); border-radius: 10px; text-align: center; border: 1px solid #eee; transition: transform 0.3s; }
-        .step-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .step-num { width: 60px; height: 60px; background: var(--acento); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; margin: 0 auto 20px auto; box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4); }
-        .step-card h3 { color: var(--primario); margin-bottom: 15px; font-size: 20px; }
-        .step-card p { color: #555; font-size: 15px; }
-    
+
+        /* Llamado a la Acción (CTA) */
+        .cta { padding: 80px 10%; text-align: center; background: var(--secundario); color: white; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { font-size: 18px; margin-bottom: 30px; opacity: 0.8; }
+
+        /* Footer */
+        footer { background: #1a252f; color: #bdc3c7; text-align: center; padding: 20px; font-size: 14px; }
+        footer span { color: var(--acento); font-weight: bold; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 50px 5%; }
+            .hero-text { padding-right: 0; margin-bottom: 40px; }
+            .hero-text h1 { font-size: 36px; }
+            nav a { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -105,7 +110,7 @@
         <nav>
             <a href="#beneficios">Beneficios</a>
             <a href="#como-funciona">Cómo Funciona</a>
-            <a href="#contacto" class="btn-nav">Agendar Demo</a>
+            <a href="https://calendly.com/es" target="_blank" class="btn-nav">Agendar Demo</a>
         </nav>
     </header>
 
@@ -115,7 +120,7 @@
             <p>El software de capacitación corporativa diseñado para Call Centers y áreas operativas. Cumplí con las normas ISO, emití boletines en PDF con un clic y monitoreá el progreso de cada operador en tiempo real.</p>
             <a href="https://gac-pro-demo.vercel.app/" target="_blank" class="btn-hero"><i class="fa-solid fa-rocket"></i> Iniciar Prueba Gratuita</a>
         </div>
-       <div class="hero-img">
+        <div class="hero-img">
             <div style="background: white; padding: 25px; border-radius: 10px; color: #333; text-align: left; box-shadow: 0 15px 35px rgba(0,0,0,0.4); border-top: 5px solid var(--primario);">
                 <h3 style="color:#2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px; font-size: 18px;"><i class="fa-solid fa-chart-pie" style="color:var(--primario);"></i> Tablero General</h3>
                 <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px;">
@@ -125,8 +130,6 @@
                 <div style="height: 180px; position: relative; margin-top: 15px;">
                     <canvas id="mockChart"></canvas>
                 </div>
-            </div>
-        </div>
             </div>
         </div>
     </section>
@@ -194,71 +197,73 @@
 
     <section id="precios" class="pricing">
         <h2>Planes diseñados para tu empresa</h2>
-        <p class="subtitulo" style="color: #7f8c8d; font-size: 18px;">Sin costos ocultos. Cancelá cuando quieras.</p>
+        <p class="subtitulo" style="color: #7f8c8d; font-size: 18px;">Elegí el modelo de inversión que mejor se adapte a tu presupuesto.</p>
         
         <div class="pricing-grid">
             <div class="price-card">
-                <h3>Plan PyME</h3>
-                <div class="price">$25.000<span>/mes</span></div>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> Hasta 50 Operadores</li>
-                    <li><i class="fa-solid fa-check"></i> 1 Administrador (Entrenador)</li>
-                    <li><i class="fa-solid fa-check"></i> Reportes en Excel</li>
-                    <li><i class="fa-solid fa-check"></i> Soporte por Email</li>
-                </ul>
-                <a href="#contacto" class="btn-price">Empezar con PyME</a>
-            </div>
-
-            <div class="price-card destacado">
-                <div class="badge-pop">MÁS ELEGIDO</div>
-                <h3>Plan Corporativo</h3>
+                <h3>Plan Suscripción</h3>
                 <div class="price">$45.000<span>/mes</span></div>
+                <p style="font-size: 13px; color: #7f8c8d; margin-bottom: 20px; min-height: 40px;">Cero costo de instalación. Pagás mes a mes por el uso del sistema.</p>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> Hasta 200 Operadores</li>
                     <li><i class="fa-solid fa-check"></i> 3 Administradores</li>
-                    <li><i class="fa-solid fa-check"></i> Libretas en PDF Automáticas</li>
-                    <li><i class="fa-solid fa-check"></i> Registro de Auditoría (El Ojo)</li>
-                    <li><i class="fa-solid fa-check"></i> Bitácora de Agenda</li>
+                    <li><i class="fa-solid fa-check"></i> Emisión de Libretas PDF</li>
+                    <li><i class="fa-solid fa-check"></i> Actualizaciones automáticas</li>
+                    <li><i class="fa-solid fa-check"></i> Soporte por Email</li>
                 </ul>
-                <a href="#contacto" class="btn-price">Elegir Corporativo</a>
+                <a href="https://api.whatsapp.com/send?phone=+5491132905944&text=Hola%20Sol!%20Me%20interesa%20contratar%20el%20Plan%20Suscripción%20mensual%20de%20GAC%20Pro." target="_blank" class="btn-price">Elegir Suscripción</a>
+            </div>
+
+            <div class="price-card destacado">
+                <div class="badge-pop">LLAVE EN MANO</div>
+                <h3>Licencia Corporativa</h3>
+                <div class="price">$250.000<span>/setup</span></div>
+                <p style="font-size: 13px; color: #2c3e50; font-weight: bold; margin-bottom: 20px; min-height: 40px;">Pago único de instalación.<br>+ $15.000/mes (mantenimiento de Nube).</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Operadores Ilimitados</li>
+                    <li><i class="fa-solid fa-check"></i> Administradores Ilimitados</li>
+                    <li><i class="fa-solid fa-check"></i> Setup y carga inicial de datos incluida</li>
+                    <li><i class="fa-solid fa-check"></i> Videollamada de capacitación al equipo</li>
+                    <li><i class="fa-solid fa-check"></i> Soporte prioritario directo</li>
+                </ul>
+                <a href="https://api.whatsapp.com/send?phone=+5491132905944&text=Hola%20Sol!%20Me%20interesa%20la%20Licencia%20Corporativa%20(Llave%20en%20Mano)%20de%20GAC%20Pro." target="_blank" class="btn-price">Elegir Licencia</a>
             </div>
 
             <div class="price-card">
                 <h3>Plan Enterprise</h3>
                 <div class="price">A medida</div>
+                <p style="font-size: 13px; color: #7f8c8d; margin-bottom: 20px; min-height: 40px;">Para grandes corporaciones que requieren integraciones específicas.</p>
                 <ul>
-                    <li><i class="fa-solid fa-check"></i> Operadores Ilimitados</li>
-                    <li><i class="fa-solid fa-check"></i> Administradores Ilimitados</li>
+                    <li><i class="fa-solid fa-check"></i> Todo lo del plan Corporativo</li>
                     <li><i class="fa-solid fa-check"></i> Marca Blanca (Tu Logo)</li>
-                    <li><i class="fa-solid fa-check"></i> Base de datos dedicada</li>
-                    <li><i class="fa-solid fa-check"></i> Soporte 24/7 por WhatsApp</li>
+                    <li><i class="fa-solid fa-check"></i> Base de datos dedicada y privada</li>
+                    <li><i class="fa-solid fa-check"></i> Desarrollo de funciones a medida</li>
                 </ul>
-                <a href="#contacto" class="btn-price">Contactar Ventas</a>
+                <a href="https://api.whatsapp.com/send?phone=+5491132905944&text=Hola%20Sol!%20Me%20gustaría%20consultar%20por%20el%20Plan%20Enterprise%20a%20medida%20para%20GAC%20Pro." target="_blank" class="btn-price">Contactar Ventas</a>
             </div>
         </div>
     </section>
 
-   <section id="contacto" class="cta">
+    <section id="contacto" class="cta">
         <h2>¿Listos para modernizar el área de capacitación?</h2>
-        <p>Dejá de perder el tiempo cruzando datos a mano. Elegí un día y horario en mi calendario para una demostración gratuita.</p>
+        <p>Dejá de perder el tiempo cruzando datos a mano. Escribime por WhatsApp o agendá una videollamada para conocer el sistema en acción.</p>
         
         <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-            <a href="https://calendly.com/" target="_blank" class="btn-hero" style="background: white; color: var(--primario); border: 2px solid white;">
+            <a href="https://calendly.com/es" target="_blank" class="btn-hero" style="background: white; color: var(--primario); border: 2px solid white;">
                 <i class="fa-regular fa-calendar-check" style="font-size: 20px; margin-right: 8px;"></i> Agendar Demo Automática
             </a>
             
-            <a href="https://wa.me/5491132905944?text=Hola%20Sol!%20Vi%20tu%20página%20de%20GAC%20Pro%20y%20me%20interesa%20una%20demo." target="_blank" class="btn-hero" style="background: #25D366; color: white; border: 2px solid #25D366;">
+            <a href="https://api.whatsapp.com/send?phone=+5491132905944&text=Hola%20Sol!%20Vi%20tu%20web%20de%20GAC%20Pro%20y%20me%20interesan%20los%20planes." target="_blank" class="btn-hero" style="background: #25D366; color: white; border: 2px solid #25D366; transition: 0.3s;">
                 <i class="fa-brands fa-whatsapp" style="font-size: 20px; margin-right: 8px;"></i> Hablar por WhatsApp
             </a>
         </div>
     </section>
 
-  
     <footer>
         <p>&copy; 2026 Desarrollado por <span>Soltech Solutions</span>. Todos los derechos reservados.</p>
     </footer>
 
-<script>
+    <script>
         const ctx = document.getElementById('mockChart').getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
@@ -281,9 +286,5 @@
             }
         });
     </script>
-</body>
-</html>
-
-
 </body>
 </html>
